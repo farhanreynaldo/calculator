@@ -1,0 +1,37 @@
+@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
+
+* {
+    /* box-sizing: border-box; */
+    font-family: "JetBrains Mono", monospace;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 480px;
+    height: 600px;
+    margin: auto;
+}
+
+.line-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 0;
+    justify-content: flex-start;
+}
+
+.button {
+    border: 1px solid black;
+    flex: 1 1 0;
+    font-size: 8px;
+    margin: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button.zero {
+    flex: 2;
+}

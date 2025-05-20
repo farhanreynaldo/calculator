@@ -50,18 +50,32 @@ const populateDisplay = function (key) {
         value_2 = "";
         operator = "";
     } else if (["+", "-", "x", "/"].includes(key)) {
+        if ((value_1 != "") & (value_2 != "")) {
+            let result = operate(value_1, value_2, operator);
+            value_1 = result.toString();
+            value_2 = "";
+            operator = "";
+        }
         operator = key;
     } else if (key == "%") {
-        if (value_1 != "") {
+        if ((value_1 != "") & (operator == "")) {
             value_1 = (Number(value_1) / 100).toString();
+        } else if ((value_2 != "") & (operator != "")) {
+            value_2 = (Number(value_2) / 100).toString();
         } else {
-            value_1 = "";
+            return;
         }
     } else if (key == "+/-") {
-        if (value_1.includes("-")) {
-            value_1 = value_1.replace("-", "");
+        if ((value_1 != "") & (operator == "")) {
+            value_1 = value_1.startsWith("-")
+                ? value_1.slice(1)
+                : `-${value_1}`;
+        } else if ((value_2 != "") & (operator != "")) {
+            value_2 = value_2.startsWith("-")
+                ? value_2.slice(1)
+                : `-${value_2}`;
         } else {
-            value_1 = "-" + value_1;
+            return;
         }
     } else {
         if ((operator == "") & (value_2 == "")) {

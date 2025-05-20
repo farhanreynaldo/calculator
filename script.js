@@ -12,11 +12,6 @@ const operate = function (value_1, value_2, operator) {
     }
 };
 
-let display = "";
-let operator = "";
-let value_1 = "";
-let value_2 = "";
-
 const buttonMap = {
     clear: "AC",
     plusminus: "+/-",
@@ -27,17 +22,22 @@ const buttonMap = {
     plus: "+",
     dot: ".",
     equal: "=",
-    7: "7",
-    8: "8",
-    9: "9",
-    4: "4",
-    5: "5",
-    6: "6",
+    0: "0",
     1: "1",
     2: "2",
     3: "3",
-    0: "0",
+    4: "4",
+    5: "5",
+    6: "6",
+    7: "7",
+    8: "8",
+    9: "9",
 };
+
+let display = "";
+let operator = "";
+let value_1 = "";
+let value_2 = "";
 
 const populateDisplay = function (key) {
     if (key === "AC") {
@@ -52,9 +52,9 @@ const populateDisplay = function (key) {
     } else if (["+", "-", "x", "/"].includes(key)) {
         operator = key;
     } else {
-        if (!operator & !value_2) {
+        if ((operator === "") & (value_2 === "")) {
             value_1 += key;
-        } else if (value_1 & !value_2) {
+        } else if (value_1 & (value_2 === "")) {
             value_2 += key;
         }
     }

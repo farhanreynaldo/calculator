@@ -1,11 +1,11 @@
-const operate = function (value_1, operator, value_2) {
+const operate = function (value_1, value_2, operator) {
     if (operator === "+") {
         return Number(value_1) + Number(value_2);
     } else if (operator === "-") {
         return Number(value_1) - Number(value_2);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return Number(value_1) * Number(value_2);
-    } else if (operator === "÷") {
+    } else if (operator === "/") {
         return Number(value_1) / Number(value_2);
     } else {
         return undefined;
@@ -21,9 +21,9 @@ const buttonMap = {
     clear: "AC",
     plusminus: "+/-",
     percent: "%",
-    divide: "÷",
-    times: "×",
-    minus: "−",
+    divide: "/",
+    times: "x",
+    minus: "-",
     plus: "+",
     dot: ".",
     equal: "=",
@@ -46,16 +46,16 @@ const populateDisplay = function (key) {
         value_2 = "";
     } else if (key === "=") {
         let result = operate(value_1, value_2, operator);
-        value_1 = result;
+        value_1 = result.toString();
         value_2 = "";
         operator = "";
-    } else if (["+", "-", "x", "÷"].includes(key)) {
+    } else if (["+", "-", "x", "/"].includes(key)) {
         operator = key;
     } else {
-        if (!value_1) {
-            value_2 = key;
-        } else {
-            value_1 = key;
+        if (!operator & !value_2) {
+            value_1 += key;
+        } else if (value_1 & !value_2) {
+            value_2 += key;
         }
     }
     display = `${value_1}${operator}${value_2}`;

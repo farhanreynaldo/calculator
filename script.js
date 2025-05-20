@@ -78,9 +78,11 @@ const populateDisplay = function (key) {
             return;
         }
     } else {
-        if ((operator == "") & (value_2 == "")) {
+        if (operator == "") {
+            if (key == "." && value_1.includes(".")) return;
             value_1 += key;
-        } else if ((value_1 != "") & (operator != "")) {
+        } else {
+            if (key == "." && value_2.includes(".")) return;
             value_2 += key;
         }
     }

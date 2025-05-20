@@ -51,6 +51,18 @@ const populateDisplay = function (key) {
         operator = "";
     } else if (["+", "-", "x", "/"].includes(key)) {
         operator = key;
+    } else if (key == "%") {
+        if (value_1 != "") {
+            value_1 = (Number(value_1) / 100).toString();
+        } else {
+            value_1 = "";
+        }
+    } else if (key == "+/-") {
+        if (value_1.includes("-")) {
+            value_1 = value_1.replace("-", "");
+        } else {
+            value_1 = "-" + value_1;
+        }
     } else {
         if ((operator == "") & (value_2 == "")) {
             value_1 += key;

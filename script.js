@@ -52,9 +52,9 @@ const populateDisplay = function (key) {
     } else if (["+", "-", "x", "/"].includes(key)) {
         operator = key;
     } else {
-        if ((operator === "") & (value_2 === "")) {
+        if ((operator == "") & (value_2 == "")) {
             value_1 += key;
-        } else if (value_1 & (value_2 === "")) {
+        } else if ((value_1 != "") & (operator != "")) {
             value_2 += key;
         }
     }

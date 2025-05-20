@@ -1,15 +1,17 @@
 const operate = function (value_1, value_2, operator) {
+    let result;
     if (operator === "+") {
-        return Number(value_1) + Number(value_2);
+        result = Number(value_1) + Number(value_2);
     } else if (operator === "-") {
-        return Number(value_1) - Number(value_2);
+        result = Number(value_1) - Number(value_2);
     } else if (operator === "x") {
-        return Number(value_1) * Number(value_2);
+        result = Number(value_1) * Number(value_2);
     } else if (operator === "/") {
-        return Number(value_1) / Number(value_2);
+        result = Number(value_1) / Number(value_2);
     } else {
         return undefined;
     }
+    return result.toFixed(2);
 };
 
 const buttonMap = {
@@ -39,11 +41,15 @@ let operator = "";
 let value_1 = "";
 let value_2 = "";
 
+const resetAll = function () {
+    operator = "";
+    value_1 = "";
+    value_2 = "";
+};
+
 const populateDisplay = function (key) {
     if (key === "AC") {
-        operator = "";
-        value_1 = "";
-        value_2 = "";
+        resetAll();
     } else if (key === "=") {
         let result = operate(value_1, value_2, operator);
         value_1 = result.toString();
